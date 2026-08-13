@@ -1,7 +1,8 @@
-# Aegis Loop Updates
+# Aegis Loop update channel
 
-Public binary update channel for Aegis Loop.
+Public release channel for the Aegis Loop friend build.
 
-- Supported GPU profiles: GTX 1070-class Pascal (CUDA 10.2) and RTX 2070-class Turing (CUDA 11.7)
-- Release archives and `latest.json` are SHA-256 verified by the application.
-- Source code, runtime logs, screen captures, credentials, and API keys are not published here.
+- Supported GPUs: NVIDIA GTX 1070 (Pascal, CUDA 10.2 profile) and RTX 2070 (Turing, CUDA 11.7 profile)
+- The Windows installer detects the GPU and installs an app-private OCR runtime.
+- Release assets contain no GitHub credentials or user logs.
+- Current release: 2026.8.13.4
