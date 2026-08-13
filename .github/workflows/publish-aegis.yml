@@ -16,15 +16,15 @@ jobs:
         shell: bash
         run: |
           mkdir -p out
-          cat release/parts/*.part > out/AegisLoop-2026.8.13.4.zip
-          echo "C780D590BA58112EBCFC66A550967A131ED4E8A41EBA9749A0DEDC968FC4B0F1  out/AegisLoop-2026.8.13.4.zip" | sha256sum -c -
+          cat release/parts/*.part > out/AegisLoop-2026.8.13.5.zip
+          echo "797572151C1FC2E6520981E3F52C0BEDE424B16F685069DCFF0F03686AC7C29B  out/AegisLoop-2026.8.13.5.zip" | sha256sum -c -
       - name: Publish immutable release assets
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
-          gh release delete v2026.8.13.4 --cleanup-tag --yes 2>/dev/null || true
-          gh release create v2026.8.13.4 out/AegisLoop-2026.8.13.4.zip release/latest.json \
-            --title "Aegis Loop 2026.8.13.4" \
-            --notes "GTX 1070 (CUDA 10.2) and RTX 2070 (CUDA 11.7) automatic runtime release. Installer GUI self-test exit handling fixed." \
+          gh release delete v2026.8.13.5 --cleanup-tag --yes 2>/dev/null || true
+          gh release create v2026.8.13.5 out/AegisLoop-2026.8.13.5.zip release/latest.json \
+            --title "Aegis Loop 2026.8.13.5" \
+            --notes "GTX 1070 / RTX 2070 automatic runtime release with corrected installer self-test handling and clean first-run documentation." \
             --latest
