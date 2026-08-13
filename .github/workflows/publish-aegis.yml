@@ -1,0 +1,30 @@
+name: Publish Aegis Loop Release
+on:
+  push:
+    branches: [main]
+    paths:
+      - "release/**"
+      - ".github/workflows/publish-aegis.yml"
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reassemble and verify package
+        shell: bash
+        run: |
+          mkdir -p out
+          cat release/parts/*.part > out/AegisLoop-2026.8.13.3.zip
+          echo "08AD08F4450F1FFB54D79A44213FCCCB9A1C33E4AC467E83A8DEF6CAA113C10A  out/AegisLoop-2026.8.13.3.zip" | sha256sum -c -
+      - name: Publish immutable release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh release delete v2026.8.13.3 --cleanup-tag --yes 2>/dev/null || true
+          gh release create v2026.8.13.3 out/AegisLoop-2026.8.13.3.zip release/latest.json \
+            --title "Aegis Loop 2026.8.13.3" \
+            --notes "GTX 1070 (CUDA 10.2) and RTX 2070 (CUDA 11.7) automatic runtime release." \
+            --latest
