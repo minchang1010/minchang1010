@@ -1,8 +1,11 @@
-# Aegis Loop update channel
+# Aegis Loop Release Channel
 
-Public release channel for the Aegis Loop friend build.
+Latest public friend build: **2026.8.14.1**
 
-- Supported GPUs: NVIDIA GTX 1070 (Pascal, CUDA 10.2 profile) and RTX 2070 (Turing, CUDA 11.7 profile)
-- The first launch detects the GPU and installs an app-private OCR runtime.
-- Release assets contain no GitHub credentials or user logs.
-- Current release: 2026.8.13.5
+- Supported GPUs: GTX 1070 (CC 6.1), RTX 2070 (CC 7.5), RTX 3080 Ti (CC 8.6)
+- Automatic private Python, CUDA, cuDNN, and PaddleOCR setup
+- TensorRT plans are disabled in the portable friend build
+- Fullscreen resize rendering and windowed scrolling fixed
+- Updates are verified with SHA-256 before replacement
+
+Download from the repository Releases page.
